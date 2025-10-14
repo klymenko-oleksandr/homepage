@@ -1,0 +1,131 @@
+---
+import { languages, skills, character, likes, dislikes, wants, certificates } from '../data/skills';
+---
+
+<!-- Languages -->
+<section>
+  <h3>Languages</h3>
+  <p class="tags small">
+    {languages.map((lang) => (
+      <span class="language">{lang}</span>
+    ))}
+  </p>
+</section>
+
+<!-- Skills -->
+<section>
+  <h3>Skills</h3>
+  <p class="tags small">
+    {skills.map((skill, index) => (
+      <>
+        {['MATERIAL UI', 'CI/CD', 'REST API', 'NODE.JS', 'MODULE FEDERATION', 'MICRO FRONTENDS'].includes(skill) ? (
+          <span class="nowrap">{skill}</span>
+        ) : (
+          skill
+        )}
+        {index < skills.length - 1 ? ' ' : ''}
+      </>
+    ))}
+  </p>
+</section>
+
+<!-- Character -->
+<section>
+  <h3>Character</h3>
+  <p class="tags small">
+    {character.map((trait, index) => (
+      <>
+        {['TEAM-ORIENTED', 'FAMILY-FOCUSED'].includes(trait) ? (
+          <span class="nowrap">{trait}</span>
+        ) : trait === 'ARCHITECT' ? (
+          <a href="https://www.16personalities.com/profiles/intj-a/m/7g210lld0" rel="external">{trait}</a>
+        ) : (
+          trait
+        )}
+        {index < character.length - 1 ? ' ' : ''}
+      </>
+    ))}
+  </p>
+</section>
+
+<!-- Likes -->
+<section>
+  <h3>Likes😃</h3>
+  <p class="tags small">
+    {likes.map((like, index) => (
+      <>
+        {['EGGS AND ORANGE JUICE', 'SELF-EDUCATION', 'BOB ROSS', 'DRAMA MOVIES', 'BRITISH ACCENT', 'BLUE COLOR', 'ROGER FEDERER'].includes(like) ? (
+          <span class="nowrap">{like}</span>
+        ) : (
+          like
+        )}
+        {index < likes.length - 1 ? ' ' : ''}
+      </>
+    ))}
+  </p>
+</section>
+
+<!-- Dislikes -->
+<section>
+  <h3>Dislikes😞</h3>
+  <p class="tags small">
+    {dislikes.map((dislike, index) => (
+      <>
+        {['OWN BAD HABITS', 'ASS-KISSERS', 'CIRCUSES WITH ANIMALS', 'PASSIVE-AGGRESSIVE'].includes(dislike) ? (
+          <span class="nowrap">{dislike}</span>
+        ) : (
+          dislike
+        )}
+        {index < dislikes.length - 1 ? ' ' : ''}
+      </>
+    ))}
+  </p>
+</section>
+
+<!-- Wants -->
+<section>
+  <h3>Wants🥺</h3>
+  <p class="tags small bulleted">
+    {wants.map((want) => (
+      <span class="tag">{want}</span>
+    ))}
+  </p>
+</section>
+
+<!-- Certificates -->
+<section>
+  <h3>Certificates</h3>
+  <ul class="timeline">
+    {certificates.map((cert) => (
+      <li>
+        <p><em>{cert.date}</em></p>
+        <p>
+          {cert.url ? (
+            <>
+              {cert.title.includes('Certificate') ? (
+                <>
+                  <strong><a href={cert.url} rel="external">Certificate</a></strong>
+                  {cert.title.replace('Certificate', '').trim()}
+                </>
+              ) : (
+                <strong><a href={cert.url} rel="external">{cert.title}</a></strong>
+              )}
+            </>
+          ) : (
+            cert.title
+          )}
+          {cert.provider && (
+            <>
+              {' '}
+              {cert.providerUrl ? (
+                <strong><a href={cert.providerUrl} rel="external">{cert.provider}</a></strong>
+              ) : (
+                <strong>{cert.provider}</strong>
+              )}
+            </>
+          )}
+        </p>
+      </li>
+    ))}
+  </ul>
+</section>
