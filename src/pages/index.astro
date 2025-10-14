@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WaveBackground from "../components/WaveBackground.astro";
+import Header from "../components/Header.astro";
+import ExperienceSection from "../components/ExperienceSection.astro";
+import Sidebar from "../components/Sidebar.astro";
+---
+
+<Layout title="Oleksandr Klymenko — Résumé">
+  <WaveBackground />
+  <article>
+    <div class="page" style="border-color: midnightblue">
+      <div class="stackable grid">
+        <Header />
+        <div class="row">
+          <div class="sixteen wide column">
+            <div class="fat divider"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="ten wide column">
+            <ExperienceSection />
+          </div>
+          <div class="six wide column">
+            <Sidebar />
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,60 @@
+---
+import { contacts } from '../data/contacts';
+
+const getIconViewBox = (type: string) => {
+  switch (type) {
+    case 'linkedin': return '0 0 448 512';
+    case 'github': return '0 0 496 512';
+    case 'telegram': return '0 0 448 512';
+    case 'email': return '0 0 512 512';
+    case 'phone': return '0 0 320 512';
+    default: return '0 0 24 24';
+  }
+};
+---
+
+<div class="row">
+  <div class="five wide center aligned column">
+    <div class="avatar-wrapper">
+      <object
+        class="avatar"
+        data={`${import.meta.env.BASE_URL}/assets/images/avatar2.jpeg`}
+        role="img"
+        aria-label="My profile picture"
+      ></object>
+    </div>
+  </div>
+  <div class="eleven wide column">
+    <div class="stackable grid">
+      <div class="sixteen wide column">
+        <h1 class="name">Oleksandr Klymenko</h1>
+        <div class="job">Software Engineer</div>
+        <ul class="contacts">
+          {contacts.map((contact) => (
+            <li>
+              <a href={contact.href} rel="author" class={contact.type}>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox={getIconViewBox(contact.type)}>
+                  <path d={contact.icon}></path>
+                </svg>
+                <span>{contact.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="sixteen wide mobile only column">
+        <div class="divider"></div>
+      </div>
+      <div class="sixteen wide column">
+        <h2>Résumé</h2>
+        <p>
+          &mdash; Hello! I'm software engineer with 7+ years of experience building scalable,
+          high-performance web applications using React and Angular. Proficient in migrating legacy
+          codebases, implementing component-based architectures, and working with micro frontends and
+          backend-for-frontend (BFF) layers. Known for writing maintainable code, driving UI consistency,
+          and collaborating effectively in cross-functional teams.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

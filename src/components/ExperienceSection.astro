@@ -1,0 +1,105 @@
+---
+import { currentExperience, pastExperience } from '../data/experience';
+---
+
+<section>
+  <h3>Experience</h3>
+  <h6>Now</h6>
+  <ul class="timeline">
+    {currentExperience.map((item) => (
+      <li class={item.highlighted ? 'highlighted' : ''}>
+        <p>
+          <em>{item.period}</em>
+        </p>
+        <p>
+          {item.title.includes('Study') ? (
+            <>
+              {item.title} at{' '}
+              <strong><a href={item.companyUrl} rel="external">{item.company}</a></strong>
+            </>
+          ) : (
+            <>
+              Work as <strong>{item.title}</strong>
+              {item.company && (
+                <>
+                  {' '}at <strong><a href={item.companyUrl} rel="external">{item.company}</a></strong>
+                </>
+              )}
+            </>
+          )}
+        </p>
+        {item.achievements && (
+          <>
+            <b><i>Key achievements:</i></b>
+            <ul>
+              {item.achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {item.skills && (
+          <>
+            <b><i>Skills:</i></b>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.skills}
+            </p>
+          </>
+        )}
+      </li>
+    ))}
+  </ul>
+  <h6>Back then</h6>
+  <ul class="timeline">
+    {pastExperience.map((item) => (
+      <li>
+        {item.period && (
+          <p>
+            <em>{item.period}</em>
+          </p>
+        )}
+        <p>
+          {item.company ? (
+            <>
+              Work as <strong>{item.title}</strong> at{' '}
+              <strong><a href={item.companyUrl} rel="external">{item.company}</a></strong>
+            </>
+          ) : item.companyUrl && item.title.includes('Born') ? (
+            <>
+              <strong>Born</strong> in{' '}
+              <strong><a href={item.companyUrl} rel="external">Dnipro, Ukraine.</a></strong>
+              <sup><em>— Thanks, mom and dad!</em></sup>
+            </>
+          ) : item.companyUrl && item.title.includes('Relocated') ? (
+            <>
+              <strong>Relocated</strong> to{' '}
+              <strong><a href={item.companyUrl} rel="external">Kyiv, Ukraine</a></strong>
+            </>
+          ) : item.period ? (
+            <strong>{item.title}</strong>
+          ) : (
+            <em>{item.title}</em>
+          )}
+        </p>
+        {item.achievements && (
+          <>
+            <b><i>Key achievements:</i></b>
+            <ul>
+              {item.achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {item.skills && (
+          <>
+            <b><i>Skills:</i></b>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.skills}
+            </p>
+          </>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
